@@ -9,18 +9,23 @@
 
     <xsl:template match="manifest">
       \begin{landscape}
+      {\small {
         <xsl:for-each-group select="*" group-starting-with="permission-group">
-            \begin{longtable}{l|l|l}
+            \begin{longtable}{p{6cm}|l|l}
             <xsl:apply-templates select="current-group()"/>
             \end{longtable}
         </xsl:for-each-group>
+        }}
         \end{landscape}
     </xsl:template>    
     
     <xsl:template match="permission-group">
-        Group &amp; \multicolumn{2}{|l|}{<xsl:value-of select="normalize-space(preceding-sibling::comment()[1])" />} \\
-        \verb|<xsl:value-of select="substring(@android:name, 26, 35)" />| &amp; fg &amp;  dfg\\
-        Permission &amp; Permission Level &amp; Description \\
+        Group &amp; \multicolumn{2}{|l|}{Description} \\
+        \hline
+        \verb|<xsl:value-of select="substring(@android:name, 26, 35)" />| &amp; \multicolumn{2}{|l|}{<xsl:value-of select="normalize-space(preceding-sibling::comment()[1])" />}\\
+        \hline
+        \textbf{Permission} &amp; \textbf{Permission Level} &amp; \textbf{Description} \\
+        \hline
         \hline
     </xsl:template>    
     
