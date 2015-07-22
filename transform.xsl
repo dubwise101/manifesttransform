@@ -8,11 +8,13 @@
                 encoding="UTF-8"/>
 
     <xsl:template match="manifest">
+      \begin{landscape}
         <xsl:for-each-group select="*" group-starting-with="permission-group">
             \begin{tabular}{l|l|l}
             <xsl:apply-templates select="current-group()"/>
             \end{tabular}
         </xsl:for-each-group>
+        \end{landscape}
     </xsl:template>    
     
     <xsl:template match="permission-group">
