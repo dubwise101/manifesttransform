@@ -10,9 +10,9 @@
     <xsl:template match="manifest">
       \begin{landscape}
         <xsl:for-each-group select="*" group-starting-with="permission-group">
-            \begin{tabular}{l|l|l}
+            \begin{longtable}{l|l|l}
             <xsl:apply-templates select="current-group()"/>
-            \end{tabular}
+            \end{longtable}
         </xsl:for-each-group>
         \end{landscape}
     </xsl:template>    
