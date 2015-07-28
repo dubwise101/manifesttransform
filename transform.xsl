@@ -9,9 +9,9 @@
 
     <xsl:template match="manifest">
       \begin{landscape}
-      {\small {
+      {\footnotesize {
         <xsl:for-each-group select="*[position() != 1]" group-starting-with="eat-comment">       
-            \begin{longtable}{p{6cm}|p{3cm}|p{13cm}}
+            \begin{longtable}{p{6cm}|p{3cm}|p{14cm}}
             <xsl:apply-templates select="current-group()"/>
             \end{longtable}
         </xsl:for-each-group>
@@ -20,13 +20,13 @@
     </xsl:template>    
     
     <xsl:template match="eat-comment">        
-        \multicolumn{3}{c}{\large <xsl:value-of select="preceding-sibling::comment()[2]"/>} \\
+        \multicolumn{3}{c}{\normalsize \textbf{<xsl:value-of select="preceding-sibling::comment()[2]"/>}} \\[3ex]
     </xsl:template>
     
     <xsl:template match="permission-group">        
-        \textbf{Group} &amp; \multicolumn{2}{|p{16cm}|}{\textbf{Description}} \\
+        \textbf{Group} &amp; \multicolumn{2}{|p{17cm}}{\textbf{Description}} \\
         \hline
-        \verb|<xsl:value-of select="substring(@android:name, 26, 35)" />| &amp; \multicolumn{2}{|p{16cm}|}{<xsl:value-of select="normalize-space(preceding-sibling::comment()[1])" />}\\
+        \verb|<xsl:value-of select="substring(@android:name, 26, 35)" />| &amp; \multicolumn{2}{|p{17cm}}{<xsl:value-of select="normalize-space(preceding-sibling::comment()[1])" />}\\
         \hline
         \textbf{Permission} &amp; \textbf{Protection Level} &amp; \textbf{Description} \\
         \hline
@@ -40,4 +40,4 @@
           </xsl:if><xsl:text>\\</xsl:text>
     </xsl:template>    
     
-</xsl:transform>
+</xsl:transform>  
